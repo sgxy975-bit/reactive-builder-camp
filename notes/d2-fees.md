@@ -64,3 +64,11 @@ lREACT 就像 Q 币：想让 Reactive 帮我监控链，就要付 Q 币。
 - 订阅负责粗筛（只能做"等于"匹配），react() 负责细筛（比如"金额大于 X"）
 
 **黑客松想法见 [ideas.md](ideas.md)。**
+
+## 更正（D3 实验后补充）
+
+上面说"直接转给合约 → 进 balance，平台扣不到"是**错的**。
+
+D3 部署时用 `--value 0.5ether` 把 lREACT 带进合约（进的是 balance），之后 react() 被调用 20 次：balance 从 0.5 降到 0.2292，debt 一直是 0，reserves 一直是 0。说明**费用可以直接从合约的 balance 里扣**。合约继承的 `AbstractReactive` 自带付款功能。
+
+结论：部署时带上 lREACT 就能运行，不需要再单独 `depositTo`。两种方式都可以。
