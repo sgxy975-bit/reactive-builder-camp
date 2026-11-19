@@ -8,7 +8,7 @@
 
 合约代码：[contracts/MyXfers.sol](../contracts/MyXfers.sol)
 
-## 我改了什么
+## 更改
 
 基于官方 omni 分支的 Xfers 示例，改了两处：
 
@@ -40,9 +40,9 @@ forge create src/MyXfers.sol:MyXfers \
 | Balance | 0.5 → 0.2292 lREACT | 20 次花了约 0.27，平均每次约 0.0135 |
 | Debt | 0 | 没有欠费 |
 
-## 我学到的
+## 总结
 
 - **订阅太宽 = 烧钱快**：订阅"所有代币"，20 次几秒钟就用完了，全部发生在同一个区块里。订阅越精准，触发越少
 - **次数上限很重要**：没有上限的话，0.5 lREACT 很快会被耗光
 - **合约只负责"听"**：那些转账是 Sepolia 上其他人转的，我的合约只记账，自己没有转任何钱
-- **Foundry 是工具，不是平台**：`forge build` 编译、`forge test` 在本地模拟测试、`forge create` 部署到链上。合约部署后住在 Lasna 链上，电脑关机也照样运行
+- **Foundry 是工具**：`forge build` 编译、`forge test` 在本地模拟测试、`forge create` 部署到链上。合约部署后住在 Lasna 链上，电脑关机也照样运行
